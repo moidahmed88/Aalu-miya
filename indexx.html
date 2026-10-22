@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aalu Miyan | The Pizzeries Shop</title>
+
+<style>
+:root {
+  --gold: #ffbd19;
+  --black: #090909;
+  --panel: #151515;
+  --white: #fff;
+  --muted: #c2c2c2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+header {
+  background: #090909;
+  border-bottom: 1px solid #292929;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.logo small {
+  display: block;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+}
+
+nav a:hover { color: var(--gold); }
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #111;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: .25s;
+}
+
+.btn:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+.hero {
+  min-height: 570px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+.tag {
+  color: var(--gold);
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.08;
+  margin: 20px 0;
+}
+
+h1 span { color: var(--gold); }
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 24px;
+  max-width: 470px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.outline {
+  border: 1px solid #777;
+  padding: 11px 22px;
+  border-radius: 8px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.trust {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.trust strong { color: var(--gold); }
+
+section { padding: 70px 0; }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 10px 0;
+}
+
+.section-title p { color: var(--muted); }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.food-card {
+  background: var(--panel);
+  border: 1px solid #303030;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+.food-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.food-info { padding: 16px; }
+
+.food-info h3 { font-size: 17px; }
+
+.food-info p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 7px 0;
+}
+
+.price {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.menu-note {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 25px;
+}
+
+.about { background: #141414; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-grid img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.about-grid h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  margin: 15px 0;
+}
+
+.about-grid p {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review {
+  background: var(--panel);
+  border: 1px solid #303030;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.stars { color: var(--gold); }
+
+.review p {
+  color: #ddd;
+  margin: 12px 0;
+}
+
+.review strong { color: var(--gold); }
+
+.contact {
+  text-align: center;
+  background: linear-gradient(130deg, #291b05, #0a0a0a);
+}
+
+.contact h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  margin: 12px 0;
+}
+
+.contact p {
+  color: var(--muted);
+  margin: 12px 0 25px;
+}
+
+.contact .details { margin-top: 25px; }
+
+footer {
+  padding: 25px 0;
+  border-top: 1px solid #333;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 850px) {
+  .hero, .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+  .review-grid { grid-template-columns: 1fr; }
+  .hero-image img { height: 320px; }
+  .nav { flex-wrap: wrap; padding: 15px 0; }
+}
+
+@media (max-width: 500px) {
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .nav > .btn { padding: 10px 12px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .food-card img { height: 220px; }
+  section { padding: 50px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">
+      Aalu Miyan
+      <small>THE PIZZERIES SHOP</small>
+    </a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn" href="tel:+923108599444">Order Now</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero" id="home">
+  <div>
+    <div class="tag">Freshly baked · Hot & yummy</div>
+    <h1>Aalu <span>Miyan</span><br>Good Food, Good Mood.</h1>
+
+    <p>
+      Craving something delicious? Explore cheesy pizzas,
+      crispy pizza fries and mouth-watering fast food,
+      made for your next favorite meal.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn" href="#menu">Explore Menu →</a>
+      <a class="outline"
+         href="https://www.google.com/maps/search/?api=1&query=Aalu+Miyan+Taj+Colony+Korangi+Karachi"
+         target="_blank" rel="noopener">Find Us ↗</a>
+    </div>
+
+    <div class="trust">
+      <div><strong>★ 4.7/5</strong><br>Customer Rating</div>
+      <div><strong>Fresh Food</strong><br>Made for You</div>
+      <div><strong>Karachi</strong><br>Local Flavor</div>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=85"
+      alt="Freshly baked cheesy pizza">
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-title">
+      <div class="tag">Popular picks</div>
+      <h2>Our Menu Highlights</h2>
+      <p>Discover your next favorite bite.</p>
+    </div>
+
+    <div class="menu-grid">
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=600&q=80"
+             alt="Fresh cheese pizza">
+        <div class="food-info">
+          <h3>Special Pizza</h3>
+          <p>Cheesy, delicious and freshly baked.</p>
+          <div class="price">View menu for price</div>
+        </div>
+      </article>
+
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=600&q=80"
+             alt="Loaded cheesy fries">
+        <div class="food-info">
+          <h3>Pizza Fries</h3>
+          <p>Crispy fries with delicious toppings.</p>
+          <div class="price">View menu for price</div>
+        </div>
+      </article>
+
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+             alt="Fresh burger">
+        <div class="food-info">
+          <h3>Juicy Burger</h3>
+          <p>A satisfying bite for burger lovers.</p>
+          <div class="price">View menu for price</div>
+        </div>
+      </article>
+
+      <article class="food-card">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+             alt="Golden crispy fries">
+        <div class="food-info">
+          <h3>Loaded Fries</h3>
+          <p>Golden, crispy and full of flavor.</p>
+          <div class="price">View menu for price</div>
+        </div>
+      </article>
+    </div>
+
+    <p class="menu-note">
+      Menu items and prices may vary. Contact the restaurant
+      for its current menu and availability.
+    </p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <img
+      src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85"
+      alt="Delicious pizza ready to serve">
+
+    <div>
+      <div class="tag">A little taste of happiness</div>
+      <h2>Good Food Makes Every Moment Better.</h2>
+      <p>
+        From cheesy pizza to tempting pizza fries,
+        Aalu Miyan brings fast-food favorites together
+        in one place. Bring your appetite and discover
+        something delicious.
+      </p>
+      <a class="btn" href="#contact">Visit Aalu Miyan →</a>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-title">
+      <div class="tag">Customer love</div>
+      <h2>What Customers Say</h2>
+      <p>Rated 4.7 out of 5 from 6 Google reviews.</p>
+    </div>
+
+    <div class="review-grid">
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Their pizza fries and pizza is amazing, must try!"</p>
+        <strong>Google Review</strong>
+      </article>
+
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>Discover cheesy favorites and share your experience with us.</p>
+        <strong>Your Next Visit</strong>
+      </article>
+
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>Have you tried our menu? We would love to hear your feedback.</p>
+        <strong>Share Your Review</strong>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="tag">Freshly baked · Hot & yummy</div>
+    <h2>Ready for Something Delicious?</h2>
+    <p>
+      Plot N, 6, Taj Colony, Sector 48 B, Korangi, Karachi.
+    </p>
+
+    <a class="btn" href="tel:+923108599444">
+      ☎ Call to Order: 0310-8599444
+    </a>
+
+    <div class="details">
+      <p>Payment: Cash only, as listed in the supplied details.</p>
+      <p>Opening time listed: 7 PM. Please confirm today's hours.</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Aalu+Miyan+Plot+N+6+Taj+Colony+Korangi+Karachi"
+         target="_blank" rel="noopener">Get Directions ↗</a>
+      &nbsp; | &nbsp;
+      <a href="https://www.google.com/search?q=Aalu+Miyan+The+Pizzeries+Shop+Karachi"
+         target="_blank" rel="noopener">Find Us Online ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <a class="logo" href="#home">
+      Aalu Miyan
+      <small>THE PIZZERIES SHOP</small>
+    </a>
+    <p>© 2026 Aalu Miyan. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
